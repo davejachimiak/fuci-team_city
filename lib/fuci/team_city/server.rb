@@ -1,3 +1,4 @@
+require 'fuci/server'
 require 'forwardable'
 
 module Fuci
@@ -6,6 +7,7 @@ module Fuci
       extend Forwardable
 
       def_delegator :build, :status, :build_status
+      def_delegator :build, :log, :fetch_log
     end
   end
 end

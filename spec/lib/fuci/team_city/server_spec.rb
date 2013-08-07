@@ -1,5 +1,4 @@
 require_relative '../../../spec_helper'
-stub_class 'Fuci::Server'
 require_relative '../../../../lib/fuci/team_city/server'
 
 describe Fuci::TeamCity::Server do
@@ -24,6 +23,10 @@ describe Fuci::TeamCity::Server do
 
   describe '#fetch_log' do
     it 'delegates to #build' do
+      @server.stubs(:build).returns build = mock
+      build.stubs(:log).returns log = mock
+
+      expect(@server.fetch_log).to_equal log
     end
   end
 end
