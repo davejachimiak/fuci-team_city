@@ -1,20 +1,28 @@
 # Fuci::TeamCity
 
-TODO: Write a gem description
+Run TeamCity failures locally. A [Fuci](https://github.com/davejachimiak/fuci) server extension.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'fuci-team_city'
+    gem 'fuci-team_city', '~> 0.1'
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Bundling the binstub is highly recommended:
 
-    $ gem install fuci-team_city
+    $ bundle binstubs fuci-team_city
+
+## Configuration
+### Configuration file
+To configure itself, fuci-team_city looks for a file called
+".fuci-team_city.rb" in your project's root directory. You should create
+that file and configure fuci-team_city there. The configuration must
+include your TeamCity username and password. **Therefore, you should
+include ./.fuci-team_city.rb in .gitignore.**
 
 ## Usage
 
