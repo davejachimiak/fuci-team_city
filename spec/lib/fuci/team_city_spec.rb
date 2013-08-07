@@ -19,6 +19,10 @@ describe Fuci::TeamCity do
   describe '#password' do
     it('is an accessor') { assert_accessor :password }
   end
+
+  describe '#default_branch' do
+    it('is an accessor') { assert_accessor :default_branch }
+  end
 end
 
 def assert_accessor accessor
