@@ -1,7 +1,8 @@
-require "fuci/team_city/version"
+require 'fuci/team_city/version'
+require 'fuci/configurable'
 
 module Fuci
   module TeamCity
-    # Your code goes here...
+    include Fuci::Configurable
   end
 end
