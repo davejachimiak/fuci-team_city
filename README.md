@@ -16,13 +16,18 @@ Bundling the binstub is highly recommended:
 
     $ bundle binstubs fuci-team_city
 
-## Configuration
-### Configuration file
+## Configuration file
 To configure itself, fuci-team_city looks for a file called
 ".fuci-team_city.rb" in your project's root directory. You should create
 that file and configure fuci-team_city there. The configuration must
 include your TeamCity username and password. **Therefore, you should
 include ./.fuci-team_city.rb in .gitignore.**
+
+Fuci::TeamCity.configure do |fu|
+  fu.host     = 'http://nest.icisapp.com:8111/'
+  fu.username = '<user name>'
+  fu.password = '<password>'
+end
 
 ## Usage
 
