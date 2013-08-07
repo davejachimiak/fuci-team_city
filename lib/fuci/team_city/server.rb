@@ -8,6 +8,12 @@ module Fuci
 
       def_delegator :build, :status, :build_status
       def_delegator :build, :log, :fetch_log
+
+      attr_accessor :build
+
+      def initialize
+        @build = Fuci::TeamCity::Build.create
+      end
     end
   end
 end
