@@ -2,6 +2,10 @@ require 'fuci/team_city/version'
 require 'fuci/configurable'
 
 module Fuci
+  configure do |fu|
+    fu.server = Fuci::TeamCity::Server
+  end
+
   module TeamCity
     include Fuci::Configurable
 
