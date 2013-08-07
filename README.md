@@ -34,6 +34,16 @@ Fuci::TeamCity.configure do |fu|
 end
 ```
 
+### Default branch
+
+Declare the default branch that you push to:
+
+```ruby
+Fuci::TeamCity.configure do |fu|
+  fu.default_branch = 'my-ci'
+end
+```
+
 ## Usage
 
 TODO: Write usage instructions here
