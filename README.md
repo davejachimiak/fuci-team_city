@@ -46,7 +46,21 @@ end
 
 ## Usage
 
-TODO: Write usage instructions here
+See the
+[base Fuci repo](https://github.com/davejachimiak/fuci#native-command-line-options)
+for command-line options native to Fuci.
+
+Run your latest ci failures locally:
+```sh
+$ fuci
+```
+
+Call `fuci` with a branch name to run a specific branch's failures
+branch. For example, this will run the failures from the latest master
+build on your local code:
+```sh
+$ fuci master
+```
 
 ## Contributing
 
