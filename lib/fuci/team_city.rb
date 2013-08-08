@@ -12,7 +12,7 @@ module Fuci
     include Fuci::Configurable
 
     class << self
-      attr_accessor :host, :username, :password, :default_branch
+      attr_accessor :host, :username, :password, :default_branch, :project
     end
   end
 end

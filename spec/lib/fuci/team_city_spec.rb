@@ -1,4 +1,9 @@
 require_relative '../../spec_helper'
+
+module Fuci
+  def self.configure; end;
+end
+
 require_relative '../../../lib/fuci/team_city'
 
 describe Fuci::TeamCity do
@@ -22,6 +27,10 @@ describe Fuci::TeamCity do
 
   describe '#default_branch' do
     it('is an accessor') { assert_accessor :default_branch }
+  end
+
+  describe '#project' do
+    it('is an accessor') { assert_accessor :project }
   end
 end
 
