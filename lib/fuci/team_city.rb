@@ -1,4 +1,6 @@
 require 'fuci/team_city/version'
+require 'fuci/team_city/server'
+
 require 'fuci/configurable'
 
 module Fuci
