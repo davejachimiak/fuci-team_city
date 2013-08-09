@@ -24,10 +24,14 @@ describe Fuci::TeamCity::Build do
     end
 
     describe 'when a branch is not passed in the cli' do
+      before do
+        @default_branch = Fuci::TeamCity.stubs :default_branch
+      end
+
       describe 'when a default branch is configured' do
         before do
           @branch_name = 'branch'
-          Fuci::TeamCity.stubs(:default_branch).returns @branch_name
+          @default_branch.returns @branch_name
         end
 
         it 'creates a new build with the default branch' do
@@ -39,7 +43,14 @@ describe Fuci::TeamCity::Build do
         end
       end
 
-      describe 'when a branch is not configured' do
+      describe 'when a default branch is not configured' do
+        it 'logs that no default branch is configured' do
+          Fuci::TeamCity::Build.expects(:puts).
+            with 'No default branch is configured.'
+          Fuci::TeamCity::Build.expects :exit
+
+          Fuci::TeamCity::Build.create
+        end
       end
     end
   end
