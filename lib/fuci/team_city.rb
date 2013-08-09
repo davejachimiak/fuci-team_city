@@ -13,7 +13,7 @@ module Fuci
 
     class << self
       attr_accessor :host, :username, :password, :default_branch
-      attr_reader :project
+      attr_reader   :project
     end
 
     def self.project= project_name

@@ -9,7 +9,7 @@ module Fuci
     class Server < Fuci::Server
       extend Forwardable
 
-      def_delegator :build, :status, :build_status
+      def_delegator :build, :status_code, :build_status
       def_delegator :build, :log, :fetch_log
 
       attr_accessor :build

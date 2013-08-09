@@ -29,7 +29,7 @@ describe Fuci::TeamCity::Server do
   describe '#build_status' do
     it 'delegates to #build' do
       @server.stubs(:build).returns build = mock
-      build.stubs(:status).returns build_status = mock
+      build.stubs(:status_code).returns build_status = mock
 
       expect(@server.build_status).to_equal build_status
     end

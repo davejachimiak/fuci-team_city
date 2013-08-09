@@ -5,38 +5,85 @@ stub_class 'Fuci::TeamCity::CliOptions'
 
 describe Fuci::TeamCity::Build do
   before do
-    @branch_name = 'branch_name'
-    @build       = Fuci::TeamCity::Build.new @branch_name
+    xml      = File.read 'spec/sample_data/build.xml'
+    @xml_doc = Nokogiri::XML xml
+    @build   = Fuci::TeamCity::Build.new @xml_doc
   end
 
   describe '#initialize' do
-    it 'sets the branch_name' do
-      expect(@build.branch_name).to_equal @branch_name
+    it 'sets the xml_doc passed in' do
+      expect(@build.xml_doc).to_equal @xml_doc
     end
   end
 
-  describe '#build' do
-    it 'is a memoized construction of the build info' do
-      @build.stubs(:construct_build).returns constructed_build = mock
-      expect(@build.build).to_equal constructed_build
+  describe '#status_code' do
+    before { @status = @build.stubs :status  }
+
+    describe 'when status is ERROR' do
+      before { @status.returns 'ERROR' }
+
+      it 'returns :red' do
+        expect(@build.status_code).to_equal :red
+      end
+    end
+
+    describe 'when status is passed' do
+      before { @status.returns 'SUCCESS' }
+
+      it 'returns :green' do
+        expect(@build.status_code).to_equal :green
+      end
+    end
+
+    describe 'when status is something else' do
+      it 'returns :yellow' do
+        expect(@build.status_code).to_equal :yellow
+      end
     end
   end
 
-  describe '#construct_build' do
-    it 'calls #latest_build_from on #project' do
-      @build.stubs(:project).returns project = mock
-      project.stubs(:latest_build_from).
-        with(@branch_name).
-        returns latest_build = mock
+  describe '#log' do
+    it 'makes a request with the log resource' do
+      @build.stubs(:id).returns id = 12345
+      resource = "/downloadBuildLog.html?buildId=#{id}"
+      Fuci::TeamCity::Request.stubs(:new).
+        with(resource).returns request = mock
+      request.stubs(:call).returns log = mock
 
-      expect(@build.send :construct_build ).to_equal latest_build
+      expect(@build.log).to_equal log
     end
   end
 
-  describe '#project' do
+  describe '#status' do
+    it 'returns the status from the xml doc' do
+      expect(@build.send :status ).to_equal 'ERROR'
+    end
+  end
+
+  describe '#id' do
+    it 'returns the id from the xml doc' do
+      expect(@build.send :id ).to_equal '8134'
+    end
+  end
+
+  describe '.project' do
     it 'delegates to Fuci::TeamCity.project' do
       Fuci::TeamCity.stubs(:project).returns project = 'project'
-      expect(@build.send :project ).to_equal project
+      expect(Fuci::TeamCity::Build.send :project ).to_equal project
+    end
+  end
+
+  describe '.from_resource' do
+    it 'returns a new raw build from the resource' do
+      Fuci::TeamCity::XmlDocBuilder.stubs(:from_resource).
+        with(resource = 'resource').
+        returns xml_doc = mock
+      Fuci::TeamCity::Build.stubs(:new).
+        with(xml_doc).
+        returns build = mock
+
+      from_resource = Fuci::TeamCity::Build.from_resource resource
+      expect(from_resource).to_equal build
     end
   end
 
@@ -47,14 +94,15 @@ describe Fuci::TeamCity::Build do
 
     describe 'when a branch is passed in the cli' do
       before do
-        @branch_name    = 'branch'
+        @branch_name = 'branch'
         @branch.returns @branch_name
       end
 
       it 'creates a new build with the branch passed in' do
-        Fuci::TeamCity::Build.stubs(:new).
-          with(@branch_name).
-          returns build = mock
+        Fuci::TeamCity::Build.stubs(:project).
+          returns project = mock
+        project.stubs(:latest_build_from).
+          with(@branch_name).returns build = mock
         expect(Fuci::TeamCity::Build.create).to_equal build
       end
     end
@@ -71,10 +119,10 @@ describe Fuci::TeamCity::Build do
         end
 
         it 'creates a new build with the default branch' do
-          Fuci::TeamCity::Build.stubs(:new).
-            with(@branch_name).
-            returns build = mock
-
+          Fuci::TeamCity::Build.stubs(:project).
+            returns project = mock
+          project.stubs(:latest_build_from).
+            with(@branch_name).returns build = mock
           expect(Fuci::TeamCity::Build.create).to_equal build
         end
       end
