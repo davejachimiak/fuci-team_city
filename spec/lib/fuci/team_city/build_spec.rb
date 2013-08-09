@@ -4,10 +4,39 @@ require_relative '../../../../lib/fuci/team_city/build'
 stub_class 'Fuci::TeamCity::CliOptions'
 
 describe Fuci::TeamCity::Build do
+  before do
+    @branch_name = 'branch_name'
+    @build       = Fuci::TeamCity::Build.new @branch_name
+  end
+
   describe '#initialize' do
     it 'sets the branch_name' do
-      build = Fuci::TeamCity::Build.new branch_name = 'branch_name'
-      expect(build.branch_name).to_equal branch_name
+      expect(@build.branch_name).to_equal @branch_name
+    end
+  end
+
+  describe '#build' do
+    it 'is a memoized construction of the build info' do
+      @build.stubs(:construct_build).returns constructed_build = mock
+      expect(@build.build).to_equal constructed_build
+    end
+  end
+
+  describe '#construct_build' do
+    it 'calls #latest_build_from on #project' do
+      @build.stubs(:project).returns project = mock
+      project.stubs(:latest_build_from).
+        with(@branch_name).
+        returns latest_build = mock
+
+      expect(@build.send :construct_build ).to_equal latest_build
+    end
+  end
+
+  describe '#project' do
+    it 'delegates to Fuci::TeamCity.project' do
+      Fuci::TeamCity.stubs(:project).returns project = 'project'
+      expect(@build.send :project ).to_equal project
     end
   end
 

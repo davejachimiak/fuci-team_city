@@ -5,6 +5,7 @@ module Fuci
 end
 
 require_relative '../../../lib/fuci/team_city'
+stub_class 'Fuci::TeamCity::Project'
 
 describe Fuci::TeamCity do
   describe 'composition' do
@@ -30,7 +31,29 @@ describe Fuci::TeamCity do
   end
 
   describe '#project' do
-    it('is an accessor') { assert_accessor :project }
+    it 'is a reader' do
+      project = 'project'
+      Fuci::TeamCity.instance_variable_set :@project, project
+
+      expect(Fuci::TeamCity.project).to_equal project
+
+      Fuci::TeamCity.instance_variable_set :@project, nil
+    end
+  end
+
+  describe '#project=' do
+    it 'sets @project to a project object with the project name passed in' do
+      Fuci::TeamCity::Project.stubs(:by_name).
+        with(project_name = 'name').
+        returns constructed_project = mock
+
+      Fuci::TeamCity.project = project_name
+
+      project = Fuci::TeamCity.instance_variable_get :@project
+      expect(project).to_equal constructed_project
+
+      Fuci::TeamCity.instance_variable_set :@project, nil
+    end
   end
 end
 
