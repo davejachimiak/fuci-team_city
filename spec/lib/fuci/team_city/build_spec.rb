@@ -4,6 +4,13 @@ require_relative '../../../../lib/fuci/team_city/build'
 stub_class 'Fuci::TeamCity::CliOptions'
 
 describe Fuci::TeamCity::Build do
+  describe '#initialize' do
+    it 'sets the branch_name' do
+      build = Fuci::TeamCity::Build.new branch_name = 'branch_name'
+      expect(build.branch_name).to_equal branch_name
+    end
+  end
+
   describe '.create' do
     before do
       @branch = Fuci::TeamCity::CliOptions.stubs :branch

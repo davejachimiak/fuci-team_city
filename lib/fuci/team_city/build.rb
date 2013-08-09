@@ -1,9 +1,6 @@
 module Fuci
   module TeamCity
-    class Build
-      def initialize branch_name
-      end
-
+    class Build < Struct.new :branch_name
       def self.create
         if branch_name = Fuci::TeamCity::CliOptions.branch
           new branch_name
