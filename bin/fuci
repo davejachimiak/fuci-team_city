@@ -2,10 +2,10 @@
 
 require 'fuci/team_city'
 
-begin
+# begin
   load '.fuci-team_city.rb'
-rescue => e
-  puts "Error loading .fuci-team_city.rb: #{e}"
-end
+# rescue => e
+#   puts "Error loading .fuci-team_city.rb: #{e}"
+# end
 
 Fuci.run
