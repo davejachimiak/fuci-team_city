@@ -5,14 +5,15 @@ stub_class 'Fuci::TeamCity::CliOptions'
 
 describe Fuci::TeamCity::Build do
   before do
-    xml      = File.read 'spec/sample_data/build.xml'
-    @xml_doc = Nokogiri::XML xml
-    @build   = Fuci::TeamCity::Build.new @xml_doc
+    xml      = File.read 'spec/sample_data/builds.xml'
+    xml_doc  = Nokogiri::XML xml
+    @element = xml_doc.xpath('//build').first
+    @build   = Fuci::TeamCity::Build.new @element
   end
 
   describe '#initialize' do
     it 'sets the xml_doc passed in' do
-      expect(@build.xml_doc).to_equal @xml_doc
+      expect(@build.element).to_equal @element
     end
   end
 

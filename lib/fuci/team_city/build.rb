@@ -1,16 +1,11 @@
-require 'forwardable'
 require 'fuci/team_city/request'
 require 'fuci/team_city/cli_options'
 require 'fuci/team_city/xml_doc_builder'
 
 module Fuci
   module TeamCity
-    class Build < Struct.new :xml_doc
-      extend Forwardable
-
+    class Build < Struct.new :element
       LOG_RESOURCE = lambda { |id| "/downloadBuildLog.html?buildId=#{id}" }
-
-      def_delegator :xml_doc, :xpath
 
       def status_code
         case status
@@ -42,7 +37,7 @@ module Fuci
       private
 
       def status
-        xpath('/build/@status').first.value
+        element['status']
       end
 
       def log_resource
@@ -50,7 +45,7 @@ module Fuci
       end
 
       def id
-        xpath('/build/@id').first.value
+        element['id']
       end
 
       def self.project

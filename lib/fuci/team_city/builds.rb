@@ -1,8 +1,18 @@
 require 'fuci/team_city/xml_doc_builder'
+require 'fuci/team_city/build'
+require 'forwardable'
 
 module Fuci
   module TeamCity
     class Builds < Struct.new :xml_doc
+      extend Forwardable
+
+      def_delegator :xml_doc, :xpath
+
+      def each
+        xpath('//build').each { |element| yield Build.new(element) }
+      end
+
       def self.from_resource resource
         new xml_doc(resource)
       end
@@ -21,9 +31,9 @@ require 'nokogiri'
 
 describe Fuci::TeamCity::Builds do
   before do
-    xml     = File.read 'spec/sample_data/builds.xml'
+    xml      = File.read 'spec/sample_data/builds.xml'
     @xml_doc = Nokogiri::XML xml
-    @builds = Fuci::TeamCity::Builds.new @xml_doc
+    @builds  = Fuci::TeamCity::Builds.new @xml_doc
   end
 
   describe 'composition' do
@@ -35,6 +45,22 @@ describe Fuci::TeamCity::Builds do
   describe '#initialize' do
     it 'sets the xml_doc' do
       expect(@builds.xml_doc).to_equal @xml_doc
+    end
+  end
+
+  describe '#each' do
+    it 'instantiates each build node with Build' do
+      (xml_doc = mock).stubs(:xpath).
+        with('//build').
+        returns [element = mock]
+      @builds.stubs(:xml_doc).returns xml_doc
+      Fuci::TeamCity::Build.stubs(:new).
+        with(element).
+        returns build = mock
+
+      expects(:puts).with build
+
+      @builds.each { |build| puts build }
     end
   end
 
