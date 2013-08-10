@@ -16,21 +16,33 @@ describe Fuci::TeamCity::Project do
 
   describe '#latest_build_from' do
     it 'returns a wrapped build from the branch name' do
-      @project.stubs(:build_resource).
-        with(branch_name = 'branch name').
-        returns build_resource = mock
-      Fuci::TeamCity::Build.stubs(:from_resource).
-        with(build_resource).
-        returns raw_build = mock
+      @project.stubs(:builds_from).
+        with(branch_name = 'branch_name').
+        returns builds = OpenStruct.new(first: build = mock)
 
-      expect(@project.latest_build_from branch_name ).to_equal raw_build
+      expect(@project.latest_build_from branch_name ).to_equal build
     end
   end
 
-  describe '#build_resource' do
+  describe '#builds_resource' do
     it 'returns the build resource from the xml_doc' do
-      resource = '/httpAuth/app/rest/buildTypes/id:bt2'
-      expect(@project.send :build_resource, 'master' ).to_equal resource
+      resource = '/httpAuth/app/rest/buildTypes/id:bt2/builds'
+      expect(@project.send :builds_resource, 'master' ).to_equal resource
+    end
+  end
+
+  describe '#builds_from' do
+    it 'calls from_resource on Builds with the builds resource' do
+      @project.stubs(:builds_resource).
+        with(branch_name = 'branch name').
+        returns resource = mock
+      Fuci::TeamCity::Builds.stubs(:from_resource).
+        with(resource).
+        returns builds = mock
+
+      builds_from = @project.send :builds_from, branch_name
+
+      expect(builds_from).to_equal builds
     end
   end
 

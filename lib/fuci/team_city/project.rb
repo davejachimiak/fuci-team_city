@@ -1,5 +1,5 @@
 require 'fuci/team_city/xml_doc_builder'
-require 'fuci/team_city/build'
+require 'fuci/team_city/builds'
 require 'forwardable'
 
 module Fuci
@@ -12,7 +12,7 @@ module Fuci
       def_delegator :xml_doc, :xpath
 
       def latest_build_from branch_name
-        build_from build_resource(branch_name)
+        builds_from(branch_name).first
       end
 
       def self.from_name name
@@ -21,12 +21,15 @@ module Fuci
 
       private
 
-      def build_resource branch_name
-        xpath("//buildType[@name=\"#{branch_name}\"]").attr('href').value
+      def builds_from branch_name
+        Builds.from_resource builds_resource(branch_name)
       end
 
-      def build_from resource
-        Build.from_resource resource
+      def builds_resource branch_name
+        xpath("//buildType[@name=\"#{branch_name}\"]").
+          attr('href').
+          value +
+          '/builds'
       end
 
       def self.xml_doc name
