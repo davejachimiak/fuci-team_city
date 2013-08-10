@@ -1,7 +1,7 @@
-require 'fuci/team_city/version'
-require 'fuci/team_city/server'
-
+require 'fuci'
 require 'fuci/configurable'
+require 'fuci/team_city/server'
+require 'fuci/team_city/version'
 
 module Fuci
   configure do |fu|
