@@ -1,3 +1,5 @@
+require 'net/http'
+
 module Fuci
   module TeamCity
     class Request < Struct.new :resource
