@@ -1,6 +1,7 @@
 require 'fuci'
 require 'fuci/configurable'
 require 'fuci/team_city/server'
+require 'fuci/team_city/project'
 require 'fuci/team_city/version'
 
 module Fuci
