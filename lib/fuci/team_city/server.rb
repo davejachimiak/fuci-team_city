@@ -1,7 +1,5 @@
 require 'fuci/team_city/build'
-
 require 'fuci/server'
-
 require 'forwardable'
 
 module Fuci
