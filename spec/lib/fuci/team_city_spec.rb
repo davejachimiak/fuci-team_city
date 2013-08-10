@@ -43,7 +43,7 @@ describe Fuci::TeamCity do
 
   describe '#project=' do
     it 'sets @project to a project object with the project name passed in' do
-      Fuci::TeamCity::Project.stubs(:by_name).
+      Fuci::TeamCity::Project.stubs(:from_name).
         with(project_name = 'name').
         returns constructed_project = mock
 

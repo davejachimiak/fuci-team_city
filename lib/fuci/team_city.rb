@@ -18,7 +18,7 @@ module Fuci
     end
 
     def self.project= project_name
-      @project = Project.by_name project_name
+      @project = Project.from_name project_name
     end
   end
 end
