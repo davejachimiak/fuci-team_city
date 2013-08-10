@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'fuci/team_city'
+
+begin
+  load '.fuci-team_city.rb'
+rescue
+  p 'No .fuci-team_city.rb file detected.'
+end
+
+Fuci.run
