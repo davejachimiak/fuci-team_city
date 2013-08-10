@@ -87,11 +87,11 @@ describe Fuci::TeamCity::Request do
 
   describe '#start' do
     it 'starts a request with the uri hostname and uri port' do
-      hostname = 'hostname'
-      port     = 8012
-      uri      = OpenStruct.new(hostname: hostname, port: port)
+      host = 'host'
+      port = 8012
+      uri  = OpenStruct.new(host: host, port: port)
       @request.stubs(:uri).returns uri
-      Net::HTTP.expects(:start).with hostname, port
+      Net::HTTP.expects(:start).with host, port
 
       @request.send :start
     end

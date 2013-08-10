@@ -48,7 +48,7 @@ module Fuci
       end
 
       def start
-        Net::HTTP.start uri.hostname, uri.port  do |http|
+        Net::HTTP.start uri.host, uri.port  do |http|
           http.request request_obj
         end
       end
