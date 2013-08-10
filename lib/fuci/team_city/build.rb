@@ -1,6 +1,7 @@
-require 'fuci/team_city/xml_doc_builder'
-require 'fuci/team_city/request'
 require 'forwardable'
+require 'fuci/team_city/request'
+require 'fuci/team_city/cli_options'
+require 'fuci/team_city/xml_doc_builder'
 
 module Fuci
   module TeamCity
