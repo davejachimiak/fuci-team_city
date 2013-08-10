@@ -4,8 +4,8 @@ require 'fuci/team_city'
 
 begin
   load '.fuci-team_city.rb'
-rescue
-  p 'No .fuci-team_city.rb file detected.'
+rescue => e
+  puts "Error loading .fuci-team_city.rb: #{e}, #{e.message}"
 end
 
 Fuci.run
