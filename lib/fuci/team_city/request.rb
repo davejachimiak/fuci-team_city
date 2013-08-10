@@ -13,7 +13,14 @@ module Fuci
       private
 
       def request_obj
-        @request_obj ||= Net::HTTP::Get.new uri
+        @request_obj ||=
+          begin
+            Net::HTTP::Get.new uri
+          rescue NoMethodError
+            # account for Ruby versions that that have request
+            # object initializers that take only strings
+            Net::HTTP::Get.new base_url + resource
+          end
       end
 
       def username
