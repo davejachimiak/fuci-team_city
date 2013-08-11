@@ -74,20 +74,6 @@ describe Fuci::TeamCity::Build do
     end
   end
 
-  describe '.from_resource' do
-    it 'returns a new raw build from the resource' do
-      Fuci::TeamCity::XmlDocBuilder.stubs(:from_resource).
-        with(resource = 'resource').
-        returns xml_doc = mock
-      Fuci::TeamCity::Build.stubs(:new).
-        with(xml_doc).
-        returns build = mock
-
-      from_resource = Fuci::TeamCity::Build.from_resource resource
-      expect(from_resource).to_equal build
-    end
-  end
-
   describe '.create' do
     before do
       @branch = Fuci::TeamCity::CliOptions.stubs :branch

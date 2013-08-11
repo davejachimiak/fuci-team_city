@@ -33,10 +33,6 @@ module Fuci
         end
       end
 
-      def self.from_resource resource
-        new xml_doc(resource)
-      end
-
       private
 
       def status
@@ -62,10 +58,6 @@ module Fuci
           puts 'No default branch is configured.'
           exit
         end
-      end
-
-      def self.xml_doc resource
-        XmlDocBuilder.from_resource resource
       end
     end
   end
