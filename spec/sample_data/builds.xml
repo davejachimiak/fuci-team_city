@@ -2,7 +2,7 @@
 <builds count="100" nextHref="/httpAuth/app/rest/buildTypes/id:bt36/builds?count=100&start=100">
   <build buildTypeId="bt36" href="/httpAuth/app/rest/builds/id:8134" id="8134" number="354" startDate="20130808T171657-0400" status="ERROR" webUrl="http://subdomain.domain.com:8101/viewLog.html?buildId=8134&buildTypeId=bt36"/>
   <build buildTypeId="bt36" href="/httpAuth/app/rest/builds/id:8111" id="8111" number="353" startDate="20130806T100535-0400" status="SUCCESS" webUrl="http://subdomain.domain.com:8101/viewLog.html?buildId=8111&buildTypeId=bt36"/>
-  <build buildTypeId="bt36" href="/httpAuth/app/rest/builds/id:8110" id="8110" number="352" startDate="20130806T094353-0400" status="SUCCESS" webUrl="http://subdomain.domain.com:8101/viewLog.html?buildId=8110&buildTypeId=bt36"/>
+  <build buildTypeId="bt36" href="/httpAuth/app/rest/builds/id:8110" id="8110" number="352" startDate="20130806T094353-0400" status="ERROR" webUrl="http://subdomain.domain.com:8101/viewLog.html?buildId=8110&buildTypeId=bt36"/>
   <build buildTypeId="bt36" href="/httpAuth/app/rest/builds/id:8106" id="8106" number="351" startDate="20130805T165809-0400" status="SUCCESS" webUrl="http://subdomain.domain.com:8101/viewLog.html?buildId=8106&buildTypeId=bt36"/>
   <build buildTypeId="bt36" href="/httpAuth/app/rest/builds/id:8105" id="8105" number="350" startDate="20130805T165006-0400" status="SUCCESS" webUrl="http://subdomain.domain.com:8101/viewLog.html?buildId=8105&buildTypeId=bt36"/>
   <build buildTypeId="bt36" href="/httpAuth/app/rest/builds/id:8102" id="8102" number="349" startDate="20130805T144634-0400" status="SUCCESS" webUrl="http://subdomain.domain.com:8101/viewLog.html?buildId=8102&buildTypeId=bt36"/>
