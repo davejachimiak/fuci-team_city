@@ -1,4 +1,5 @@
 # Fuci::TeamCity
+[![Build Status](https://travis-ci.org/davejachimiak/fuci-team_city.png?branch=master)](https://travis-ci.org/davejachimiak/fuci-team_city)
 
 Run TeamCity failures locally. A
 [Fuci](https://github.com/davejachimiak/fuci) server extension.
