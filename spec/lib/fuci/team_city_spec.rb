@@ -33,6 +33,13 @@ describe Fuci::TeamCity do
   describe '#project' do
     it('is an accessor') { assert_accessor :project }
   end
+
+  describe '.add_testers' do
+    it 'delegates to Fuci' do
+      Fuci.expects(:add_testers).with testers = mock
+      Fuci::TeamCity.add_testers testers
+    end
+  end
 end
 
 def assert_accessor accessor
