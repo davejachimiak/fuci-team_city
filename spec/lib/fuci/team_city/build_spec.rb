@@ -68,8 +68,8 @@ describe Fuci::TeamCity::Build do
   end
 
   describe '.project' do
-    it 'delegates to Fuci::TeamCity.project' do
-      Fuci::TeamCity.stubs(:project).returns project = 'project'
+    it 'Calls Project.from_name' do
+      Fuci::TeamCity::Project.stubs(:from_name).returns project = mock
       expect(Fuci::TeamCity::Build.send :project ).to_equal project
     end
   end

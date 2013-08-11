@@ -15,8 +15,8 @@ module Fuci
         builds_from(branch_name).first
       end
 
-      def self.from_name name
-        new xml_doc(name)
+      def self.from_name
+        new xml_doc
       end
 
       private
@@ -32,8 +32,12 @@ module Fuci
           '/builds'
       end
 
-      def self.xml_doc name
-        XmlDocBuilder.from_resource RESOURCE.(name)
+      def self.xml_doc
+        XmlDocBuilder.from_resource RESOURCE.(project_name)
+      end
+
+      def self.project_name
+        Fuci::TeamCity.project
       end
     end
   end

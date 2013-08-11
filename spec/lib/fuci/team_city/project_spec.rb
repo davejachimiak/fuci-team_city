@@ -49,6 +49,7 @@ describe Fuci::TeamCity::Project do
   describe '.from_name' do
     it 'creates a new project object with an xml doc from the response' do
       resource = "/httpAuth/app/rest/projects/name:#{name = 'name'}"
+      Fuci::TeamCity::Project.stubs(:project_name).returns name
       Fuci::TeamCity::XmlDocBuilder.stubs(:from_resource).
         with(resource).
         returns xml_doc = mock
@@ -56,8 +57,15 @@ describe Fuci::TeamCity::Project do
         with(xml_doc).
         returns project = mock
 
-      from_name = Fuci::TeamCity::Project.from_name name
+      from_name = Fuci::TeamCity::Project.from_name
       expect(from_name).to_equal project
+    end
+  end
+
+  describe '.name' do
+    it 'delegates to Fuci::TeamCity.project' do
+      Fuci::TeamCity.stubs(:project).returns project = mock
+      expect(Fuci::TeamCity::Project.project_name).to_equal project
     end
   end
 end
