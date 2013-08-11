@@ -13,12 +13,7 @@ module Fuci
     include Fuci::Configurable
 
     class << self
-      attr_accessor :host, :username, :password, :default_branch
-      attr_reader   :project
-    end
-
-    def self.project= project_name
-      @project = Project.from_name project_name
+      attr_accessor :host, :project, :default_branch, :username, :password
     end
   end
 end
