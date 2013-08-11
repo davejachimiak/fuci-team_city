@@ -24,6 +24,7 @@ include your TeamCity username and password. **Therefore, you should
 include ./.fuci-team_city.rb in .gitignore.**
 
 You must configure the following variables in .fuci-team_city.rb:
+
 1. TeamCity host site
 2. project name
 3. default branch
@@ -40,15 +41,24 @@ Fuci::TeamCity.configure do |fu|
 end
 ```
 
-### Default branch
+### Adding custom tester plugins
 
-Declare the default branch that you push to:
-
+Fuci tester plugins should return two things: Whether a failed build has
+failed with a specific testing framework (e.g. RSpec, Cucumber) and the
+command-line command that runs those specific failures. As of now, Fuci
+ships with RSpec and Cucumber tester plugins. If you want to add custom
+testers, add them in the configuration:
 ```ruby
-Fuci::TeamCity.configure do |fu|
-  fu.default_branch = 'my-ci'
+Fuci::Travis.configure do |fu|
+  ...
+  ...
+  fu.add_testers Fuci::Spec, Fuci::AnotherTestingFramework
+  ...
+  ...
 end
 ```
+
+See the base Fuci repo for more information on custom testers.
 
 ## Usage
 
