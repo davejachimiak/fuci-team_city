@@ -19,8 +19,12 @@ module Fuci
           rescue NoMethodError
             # account for Ruby versions that that have request
             # object initializers that take only strings
-            Net::HTTP::Get.new base_url + resource
+            Net::HTTP::Get.new full_url
           end
+      end
+
+      def full_url
+        base_url + resource
       end
 
       def username
@@ -32,7 +36,7 @@ module Fuci
       end
 
       def uri
-        @uri ||= URI base_url + resource
+        @uri ||= URI full_url
       end
 
       def base_url
