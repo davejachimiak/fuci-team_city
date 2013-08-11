@@ -25,7 +25,7 @@ that file and configure fuci-team_city there. The configuration must
 include your TeamCity username and password. **Therefore, you should
 include ./.fuci-team_city.rb in .gitignore.**
 
-You must configure the following variables in .fuci-team_city.rb:
+You must configure the following in .fuci-team_city.rb:
 
 1. TeamCity host site
 2. project name
