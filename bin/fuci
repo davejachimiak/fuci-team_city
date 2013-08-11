@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'fuci/team_city'
+
+load '.fuci-team_city.rb'
+
+Fuci.run
