@@ -23,14 +23,20 @@ that file and configure fuci-team_city there. The configuration must
 include your TeamCity username and password. **Therefore, you should
 include ./.fuci-team_city.rb in .gitignore.**
 
-Configure your TeamCity host, username, and password in the
-configuration file:
+You must configure the following variables in .fuci-team_city.rb:
+1. TeamCity host site
+2. project name
+3. default branch
+4. username
+5. password
 
 ```ruby
 Fuci::TeamCity.configure do |fu|
-  fu.host     = 'http://teamcity.myserver.com:8111/'
-  fu.username = '<user name>'
-  fu.password = '<password>'
+  fu.host           = 'teamcity.myserver.com:8111'
+  fu.project        = 'my_app'
+  fu.default_branch = 'my-ci'
+  fu.username       = 'username'
+  fu.password       = 'password'
 end
 ```
 
