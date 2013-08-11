@@ -1,6 +1,7 @@
 # Fuci::TeamCity
 
-Run TeamCity failures locally. A [Fuci](https://github.com/davejachimiak/fuci) server extension.
+Run TeamCity failures locally. A
+[Fuci](https://github.com/davejachimiak/fuci) server extension.
 
 ## Installation
 
@@ -58,7 +59,8 @@ Fuci::Travis.configure do |fu|
 end
 ```
 
-See the base Fuci repo for more information on custom testers.
+See the [base Fuci repo](https://github.com/davejachimiak/fuci#native-command-line-options)
+for more information on custom testers.
 
 ## Usage
 
