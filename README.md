@@ -59,7 +59,7 @@ Fuci::Travis.configure do |fu|
 end
 ```
 
-See the [base Fuci repo](https://github.com/davejachimiak/fuci#native-command-line-options)
+See the [base Fuci repo](https://github.com/davejachimiak/fuci#creating-tester-extensions)
 for more information on custom testers.
 
 ## Usage
