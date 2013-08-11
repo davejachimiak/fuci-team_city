@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project description="" archived="false" webUrl="http://subdomain.domain.com:8101/project.html?projectId=project2" id="project2" name="sloth_finder" href="/httpAuth/app/rest/projects/id:project2">
+<buildTypes>
+    <buildType id="bt15" name="me-ci" href="/httpAuth/app/rest/buildTypes/id:bt15" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt15"/>
+    <buildType id="bt36" name="you-ci" href="/httpAuth/app/rest/buildTypes/id:bt36" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt36"/>
+    <buildType id="bt38" name="ya-ci" href="/httpAuth/app/rest/buildTypes/id:bt38" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt38"/>
+    <buildType id="bt14" name="durk-ci" href="/httpAuth/app/rest/buildTypes/id:bt14" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt14"/>
+    <buildType id="bt16" name="moin-ci" href="/httpAuth/app/rest/buildTypes/id:bt16" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt16"/>
+    <buildType id="bt2" name="master" href="/httpAuth/app/rest/buildTypes/id:bt2" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt2"/>
+    <buildType id="bt32" name="cray-ci" href="/httpAuth/app/rest/buildTypes/id:bt32" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt32"/>
+    <buildType id="bt11" name="kurnk-ci" href="/httpAuth/app/rest/buildTypes/id:bt11" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt11"/>
+    <buildType id="bt9" name="norla-ci" href="/httpAuth/app/rest/buildTypes/id:bt9" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt9"/>
+    <buildType id="bt10" name="production" href="/httpAuth/app/rest/buildTypes/id:bt10" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt10"/>
+    <buildType id="bt12" name="larry-ci" href="/httpAuth/app/rest/buildTypes/id:bt12" projectName="sloth_finder" projectId="project2" webUrl="http://subdomain.domain.com:8101/viewType.html?buildTypeId=bt12"/>
+</buildTypes>
+<templates>
+    <buildType id="btTemplate3" name="BranchExtractedFromName" href="/httpAuth/app/rest/buildTypes/id:(template:btTemplate3)" projectName="sloth_finder" projectId="project2"/>
+    <buildType id="btTemplate6" name="BranchExtractedFromNameBackup" href="/httpAuth/app/rest/buildTypes/id:(template:btTemplate6)" projectName="sloth_finder" projectId="project2"/>
+</templates>
+<parameters/>
+</project>
